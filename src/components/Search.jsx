@@ -1,8 +1,10 @@
-import {useRef,useEffect,useState} from 'react'
-
+import {useRef,useEffect,useState,useContext} from 'react'
+import {Appcontext} from './context'
 export default function Search(){
+  const {saveToLocal,getFromLocal,links,setLinks}=useContext(Appcontext)
   const [windowWidth,setWindowWidth]=useState(window.innerWidth)
   const [margin,setMargin]=useState(0) 
+  const [linksWidth,setLinksWidth]=useState(0)
   useEffect(() => {
     function handleResize() {
       setWindowWidth(window.innerWidth);
@@ -13,14 +15,16 @@ export default function Search(){
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   const searchbox=useRef(null)
-  const infoDiv=useRef(null)
+  const linksContainer=useRef(null)
   useEffect(()=>{
     const height=searchbox.current.getBoundingClientRect().height
     searchbox.current.style.top=`-${height/2}px`
-    setMargin(height/2)
+    setMargin(height/2)  ;  
+ setLinksWidth(searchbox.current.getBoundingClientRect().width)
   },[windowWidth]);
   //api call 
-  const [links,setLinks]=useState([])
+ 
+
   const [value,setValue]=useState('')
   const [error,setError]=useState(false);
   const [loading,setLoading]=useState(false)
@@ -52,7 +56,7 @@ export default function Search(){
   useEffect(()=>{
     let time=setTimeout(()=>{
       setCopiedIndex(null)
-    },1500)
+    },2500)
     return (
       ()=>{
         clearTimeout(time)
@@ -61,33 +65,33 @@ export default function Search(){
   },[copiedIndex])
   return(
     <>
-    <div className='search-container p-5 position-relative d-flex flex-column align-items-center'>
+    <div className='search-container p-4 position-relative d-flex flex-column align-items-center'>
       <form onSubmit={(e)=>{getch(value,e)}} ref={searchbox} className='container search-box position-absolute shadow p-5 rounded row justify-content-center'>
         <input disabled={loading?true:false} value={value}  placeholder="Shorten a link here" type='text' className={`p-3 rounded mx-3 col-lg-9 my-2 my-lg-0 ${error?'border-2 border-danger text-danger':'border-0 '} `}onChange={(e)=>{setValue(e.target.value);setError(false)}}/>
         <button type='submit' className='btn btn-primary p-3 col-lg-2'>{loading?'Loading':'Shorten It'}</button>
       <div className='position-relative'>
-      {error && <p className=' mx-4 text-danger position-absolute'><i>Please provide a valid url.</i></p>}
+      {error && <p className=' mx-lg-4 mx-2 text-danger position-absolute'><i>Please provide a valid url.</i></p>}
       </div>  
       </form>
         
 {/*       shorted links */}
-      
+      <div ref={linksContainer} style={{width:linksWidth+'px'}}>
         {links.length>0 && 
           links.map((item,index)=>{
             const show=copiedIndex===index
             return (
-                <div key={index} className='container d-flex flex-lg-row flex-column bg-white p-4  rounded shadow justify-content-between align-items-lg-center text-break' style={index===0?{marginTop:margin+'px'}:{marginTop:'3rem'}}>
+                <div key={index} className=' d-flex flex-lg-row flex-column bg-white p-4  rounded shadow justify-content-between align-items-lg-center text-break' style={index===0?{marginTop:margin+'px'}:{marginTop:'3rem'}}>
               <h5 className='m-1'>{item.original_link}</h5>
         <hr className='m-0'/>
         <div className='d-flex flex-lg-row flex-column'>
         <p className=' m-1 text-primary'>{item.short_link}</p> 
-        <button className='btn btn-primary mx-lg-2' onClick={()=>{handleCopy(item.short_link,index)}}>{show?'Copied':'Copy'}</button>
+        <button className={`btn border-0 btn-primary mx-lg-2 ${show?'copy-btn-active':''} `}onClick={()=>{handleCopy(item.short_link,index)}}>{show?'Copied!':'Copy'}</button>
         </div>
           </div>
             )
-          }) 
-       
+          })        
  }
+        </div>
       
       <div  className='text-center info-section'>
        <h2 className='fw-bold'>Advanced Statistics</h2> 

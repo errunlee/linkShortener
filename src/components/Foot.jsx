@@ -6,7 +6,7 @@ export default function Foot(){
     <h2 className='fw-bold mb-3'>
     Boost your links today
     </h2>
-    <button className='btn btn-primary'>Get started</button>      
+        <button style={{borderRadius:'50px'}}className='fw-bold btn bg-info text-light p-3 my-3'>Get started</button>     
     </div>
       <div className='last-footer d-flex justify-content-around text-white p-5'>
         <div className='logo'>

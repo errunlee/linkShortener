@@ -1,6 +1,7 @@
-import {useState} from 'react'
+import {useState,useContext} from 'react'
+import {Appcontext} from './context'
 export default function Navbar(){
-  const [showNav,setShowNav]=useState(false)
+  const {showNav,setShowNav}=useContext(Appcontext)
   return (
     <div>
       <nav className='d-flex justify-content-between align-items-center fw-bold p-2 px-lg-5'>
@@ -16,9 +17,9 @@ export default function Navbar(){
       </div>
         <div className='d-flex login align-items-center hidden-small'>
         <p className='my-0 mx-2'>Login</p>
-        <p className='m-0 mx-2 btn bg-primary text-white'>SignUp</p>
+          <button style={{borderRadius:'50px'}}className='fw-bold btn bg-info text-light px-3 py-2 '>SignUp</button>
         </div>
-        <div onClick={()=>{setShowNav(!showNav)}} className='d-lg-none d-md-none'>{ !showNav? <svg  viewBox="0 0 100 80" width="40" height="40">
+        <div onClick={()=>{setShowNav(!showNav)}} className='d-lg-none '>{ !showNav? <svg  viewBox="0 0 100 80" width="40" height="40">
   <rect width="100" height="20"></rect>
   <rect y="30" width="100" height="20"></rect>
   <rect y="60" width="100" height="20"></rect>
@@ -34,7 +35,7 @@ export default function Navbar(){
         <li>Resources</li>
         <div className='bg-light'></div>
       <p>Login</p>
-      <button className='btn btn-primary'>SignUp</button>
+            <button style={{borderRadius:'50px'}}className='fw-bold btn bg-info text-light p-3 '>SignUp</button>
           </div>
       </div>}
     </div>
