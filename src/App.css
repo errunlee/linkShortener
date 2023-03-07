@@ -16,7 +16,10 @@ nav li{
   list-style-type:none;
   margin:0 1rem;
 }
-
+nav li:hover{
+  color:#121212;
+  cursor:pointer;
+}
 /* main */
 
 .display-1{
@@ -37,6 +40,23 @@ button:hover{
 }
 .info-section{
   margin:7rem 0 0 0;
+}
+  .info:not(:last-child)::after{
+
+     content: "";
+    background-color: #935757;
+    position: absolute;
+    height: 100px;
+    width: 12px;
+    top: 60px;
+    right: -100px;
+    display: block;
+}
+.info2{
+  transform:translateY(20px)
+}
+.info3{
+  transform:translateY(60px)
 }
 .info .img{
   border-radius:50%;
@@ -82,7 +102,7 @@ cursor:pointer;
   transition:0.3s all;
 }
 .mobile-nav{
-  animation:1s load ease-in forwards;
+  animation:0.5s load ease-in forwards;
   font-size:1.5rem;
   font-weight:bold;
   background-color: hsl(257, 27%, 26%);
@@ -135,6 +155,16 @@ cursor:pointer;
   .info{
     margin:50px 0;
   }
+  .info:not(:last-child)::after{
+     content: "";
+    background-color: hsl(180, 82%, 58%);
+    position: absolute;
+    height: 100px;
+    width: 12px;
+    top: 100%;
+   left:48%;
+    display: block;
+}
   .working-img{
     width:100%;
   }

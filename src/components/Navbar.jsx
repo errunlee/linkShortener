@@ -34,8 +34,8 @@ export default function Navbar(){
         <li>Pricing</li>
         <li>Resources</li>
         <div className='bg-light'></div>
-      <p>Login</p>
-            <button style={{borderRadius:'50px'}}className='fw-bold btn bg-info text-light p-3 '>SignUp</button>
+      <p className='m-0'>Login</p>
+            <button style={{borderRadius:'50px'}}className='fw-bold btn bg-info text-light px-3 py-2 m-0'>SignUp</button>
           </div>
       </div>}
     </div>

@@ -107,7 +107,7 @@ export default function Search(){
         </div>
        
       </div>
-        <div className='bg-white rounded shadow info mx-3 p-3 pt-5 position-relative' style={{width:'18rem'}}>
+        <div className='bg-white rounded shadow info info2 mx-3 mt-3 p-3 pt-5 position-relative' style={{width:'18rem'}}>
         <h2>Detailed Records</h2>
         <p> Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.
 </p>
@@ -115,7 +115,7 @@ export default function Search(){
          <img src='/images/icon-detailed-records.svg'/>
         </div>
       </div>
-        <div className='bg-white rounded shadow info mx-3 p-3 pt-5 position-relative' style={{width:'18rem'}}>
+        <div className='bg-white rounded shadow info info3 mx-3 p-3 pt-5 position-relative' style={{width:'18rem'}}>
         <h2>Fully Customizable</h2>
         <p>  Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.</p>
             <div className='img bg-dark p-3 position-absolute'>
