@@ -44,10 +44,10 @@ button:hover{
   .info:not(:last-child)::after{
 
      content: "";
-    background-color: #935757;
+    background-color: hsl(180, 66%, 49%);
     position: absolute;
-    height: 100px;
-    width: 12px;
+    width: 100px;
+    height: 12px;
     top: 60px;
     right: -100px;
     display: block;
